@@ -3,6 +3,7 @@ package war.account;
 import java.util.Collections;
 
 import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,6 +11,7 @@ import org.springframework.security.core.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class AccountService implements UserDetailsService {
+
+
 	
 	@Autowired
 	private AccountRepository accountRepository;
@@ -27,11 +31,11 @@ public class AccountService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@PostConstruct	
-	protected void initialize() {
-		save(new Account("user", "demo", "ROLE_USER"));
-		save(new Account("admin", "admin", "ROLE_ADMIN"));
-	}
+//	@PostConstruct
+//	protected void initialize() {
+//		save(new Account("user", "demo", "ROLE_USER"));
+//		save(new Account("admin", "admin", "ROLE_ADMIN"));
+//	}
 
 	@Transactional
 	public Account save(Account account) {
@@ -64,5 +68,6 @@ public class AccountService implements UserDetailsService {
 	private GrantedAuthority createAuthority(Account account) {
 		return new SimpleGrantedAuthority(account.getRole());
 	}
+
 
 }
