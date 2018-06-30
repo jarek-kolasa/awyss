@@ -35,7 +35,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldInitializeWithTwoDemoUsers() {
 		// act
-		accountService.initialize();
+	//	accountService.initialize();
 		// assert
 		verify(accountRepositoryMock, times(2)).save(any(Account.class));
 	}
@@ -54,7 +54,7 @@ public class AccountServiceTest {
 	@Test
 	public void shouldReturnUserDetails() {
 		// arrange
-		Account demoUser = new Account("user@example.com", "demo", "ROLE_USER");
+		Account demoUser = new Account("user@example.com", "demo", Role.ROLE_USER);
 		when(accountRepositoryMock.findOneByEmail("user@example.com")).thenReturn(demoUser);
 
 		// act
@@ -66,7 +66,7 @@ public class AccountServiceTest {
 		assertThat(hasAuthority(userDetails, demoUser.getRole())).isTrue();
 	}
 
-	private boolean hasAuthority(UserDetails userDetails, String role) {
+	private boolean hasAuthority( UserDetails userDetails, Role role) {
 		return userDetails.getAuthorities().stream()
 				.map(GrantedAuthority::getAuthority)
 				.anyMatch(isEqual(role));
