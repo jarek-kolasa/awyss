@@ -20,7 +20,7 @@ class SignupController {
 	@Autowired
 	private AccountService accountService;
 
-	@GetMapping("signup")
+	@GetMapping("/signup")
 	String signup(Model model, @RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {
 		model.addAttribute(new SignupForm());
 		if (Ajax.isAjaxRequest(requestedWith)) {
@@ -29,7 +29,7 @@ class SignupController {
 		return SIGNUP_VIEW_NAME;
 	}
 
-	@PostMapping("signup")
+	@PostMapping("/signup")
 	String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra) {
 		if (errors.hasErrors()) {
 			return SIGNUP_VIEW_NAME;
