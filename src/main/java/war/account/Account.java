@@ -7,13 +7,11 @@ import javax.persistence.*;
 import java.time.Instant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+
+
 
 @SuppressWarnings("serial")
 @Entity
-@Getter
-@Setter
 @Table(name = "account")
 public class Account implements java.io.Serializable {
 
