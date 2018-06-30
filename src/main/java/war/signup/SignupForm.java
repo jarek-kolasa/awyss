@@ -3,6 +3,7 @@ package war.signup;
 import org.hibernate.validator.constraints.*;
 
 import war.account.Account;
+import war.account.Role;
 
 public class SignupForm {
 
@@ -35,6 +36,6 @@ public class SignupForm {
 	}
 
 	public Account createAccount() {
-        return new Account(getEmail(), getPassword(), "ROLE_USER");
+        return new Account(getEmail(), getPassword(), Role.ROLE_USER);
 	}
 }

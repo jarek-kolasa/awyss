@@ -7,9 +7,13 @@ import javax.persistence.*;
 import java.time.Instant;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity
+@Getter
+@Setter
 @Table(name = "account")
 public class Account implements java.io.Serializable {
 
@@ -23,7 +27,9 @@ public class Account implements java.io.Serializable {
 	@JsonIgnore
 	private String password;
 
-	private String role = "ROLE_USER";
+
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	private Instant created;
 
@@ -31,42 +37,11 @@ public class Account implements java.io.Serializable {
 
 	}
 	
-	public Account(String email, String password, String role) {
+	public Account(String email, String password, Role role) {
 		this.email = email;
 		this.password = password;
 		this.role = role;
 		this.created = Instant.now();
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-    public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public Instant getCreated() {
-		return created;
-	}
 }
