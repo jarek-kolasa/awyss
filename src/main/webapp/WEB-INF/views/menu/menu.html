@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+</head>
+<body>
+    <div th:replace="fragments/layout :: header"></div>
+  
+    <fieldset>
+        <legend><b>Menu</b></legend>
+
+    <br>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <div>
+                    <a href="Od Jarka"><button type="button" class="btn btn-default"><b>Dane</b></button></a><br />
+                    <br />
+                    <a href="przekierowanie do strony kalkulacji"><button type="button" class="btn btn-default"><b>Stwórz nową kalkulację</b></button></a><br />
+                    <br />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </fieldset>
+
+    <div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

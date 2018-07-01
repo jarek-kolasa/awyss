@@ -1,4 +1,4 @@
-package awyss.config;
+package war.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,10 +10,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
-import awyss.account.AccountService;
+import war.account.AccountService;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -50,7 +53,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/favicon.ico", "/resources/**", "/signup", "/about", "/data").permitAll()
+                .antMatchers("/", "/favicon.ico", "/resources/**", "/signup", "/about").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -68,32 +71,6 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMeServices(rememberMeServices())
                 .key("remember-me-key");
     }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .userDetailsService(userDetailsService)
-//                .authorizeRequests()
-//                .antMatchers("/resources/**", "/registration").permitAll()
-//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-//                .antMatchers("/user/**").hasAnyRole("USER")
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/signin")
-//                .permitAll()
-//                .failureUrl("/signin?error=1")
-//                .loginProcessingUrl("/authenticate")
-//                .and()
-//            .logout()
-//                .logoutUrl("/logout")
-//                .permitAll()
-//                .logoutSuccessUrl("/signin?logout")
-//                .and()
-//            .rememberMe()
-//                .rememberMeServices(rememberMeServices())
-//                .key("remember-me-key");
-//    }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
