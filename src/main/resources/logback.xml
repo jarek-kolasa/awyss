@@ -15,5 +15,5 @@
 		<appender-ref ref="STDOUT" />
 	</root>
 
-	<logger name="war" level="ALL" />
+	<logger name="awyss" level="ALL" />
 </configuration>
