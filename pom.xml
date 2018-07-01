@@ -119,7 +119,7 @@
             <version>9.4.1207</version>
         </dependency>
         -->
-        <!-- Spring Data -->
+        <!-- Spring DataController -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
