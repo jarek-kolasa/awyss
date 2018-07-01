@@ -12,9 +12,41 @@
 
 <div th:replace="fragments/layout :: header"></div>
 <div class="container">
-    <p class="lead text-center">
-        Koopa
-    </p>
+
+    <h2><b>Nowa Kalkulacja</b></h2>
+    <br>
+
+
+
+    <select name="Klienci">
+        <option value="Klient1">Klient1</option>
+        <option value="Klient2">Klient2</option>
+        <option value="Klient3">Klient3</option>
+        <option value="Klient3">Klient3</option>
+    </select>
+<br/><br/>
+    <p>nazwa stelaża: </p>
+    <textarea cols="30" rows="1"></textarea>
+    <br/><button id="save">Zapisz</button>
+    <br>
+    <br>
+    <br>
+    <p>numer rysunku: </p>
+    <textarea cols="30" rows="1"></textarea>
+    <br/><button id="save2">Zapisz</button><br/><br>
+    <p>wykończenie</p>
+    <select name="Wykończenie">
+        <option value="farba">farba</option>
+        <option value="chrom">chrom</option>
+        <option value="surowe">surowe</option>
+    </select>
+    <button id="save3">Zapisz</button>
+
+
+
+
+
+
 </div>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
