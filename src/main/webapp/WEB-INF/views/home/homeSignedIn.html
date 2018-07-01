@@ -20,7 +20,7 @@
         Welcome to the Spring <span th:text="${springVersion}">0.0.0</span> MVC Quickstart application!
     </p>
 
-    <a href="Menu.html"><button type="button" class="btn btn-default"><b>Menu</b></button></a><br />
+    <a href="menu" th:href="@{/menu}"><button type="button" class="btn btn-default"><b>Menu</b></button></a><br />
 
     <div th:replace="fragments/layout :: footer"></div>
 </div>
