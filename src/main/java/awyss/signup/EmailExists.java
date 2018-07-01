@@ -39,7 +39,7 @@ class EmailExistsValidator implements ConstraintValidator<awyss.signup.EmailExis
 
 
     @Override
-    public void initialize(awyss.signup.EmailExists constraintAnnotation) {
+    public void initialize( awyss.signup.EmailExists constraintAnnotation) {
 
     }
 

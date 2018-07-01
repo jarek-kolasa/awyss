@@ -1,7 +1,6 @@
-package war.menu;
+package awyss.menu;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class NewCalculation {
 
