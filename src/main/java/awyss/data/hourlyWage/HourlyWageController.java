@@ -17,11 +17,11 @@ import java.util.List;
 public class HourlyWageController {
 
     @Autowired
-    private HourlyWageDao hourlyWageDao;
+    private HourlyWageRepository hourlyWageRepository;
 
     @RequestMapping("/price_per_hour")
     public String getWorkers(Model model) {
-        List<HourlyWage> hourlyWages = hourlyWageDao.findAll();
+        List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
         model.addAttribute("hourlyWage", hourlyWages);
         return "data/hourlyWage";
 
@@ -39,7 +39,7 @@ public class HourlyWageController {
         if(result.hasErrors()){
             return "error";
         }
-        hourlyWageDao.save(hourlyWage);
+        hourlyWageRepository.save(hourlyWage);
         return "data/hourlyWage";
     }
 

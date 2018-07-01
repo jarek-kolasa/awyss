@@ -60,9 +60,9 @@
                     <td>Praca</td>
                     <td>Stawka godzinowa</td>
                 </tr>
-                <tr th:each="workHour : ${price_per_hour}">
-                    <td th:text="${price_per_hour.workName}"></td>
-                    <td th:text="${price_per_hour.price}"></td>
+                <tr th:each="workHour : ${hourlyWage}">
+                    <td th:text="${workHour.workName}"></td>
+                    <td th:text="${workHour.price}"></td>
                 </tr>
             </table>
         </div>
