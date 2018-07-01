@@ -1,4 +1,4 @@
-package war.config;
+package awyss.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
-import war.account.AccountService;
+import awyss.account.AccountService;
 
 import javax.sql.DataSource;
 
