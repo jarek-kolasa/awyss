@@ -59,10 +59,19 @@
                 <tr>
                     <td>Praca</td>
                     <td>Stawka godzinowa</td>
+                    <td>Edit</td>
                 </tr>
                 <tr th:each="workHour : ${hourlyWage}">
                     <td th:text="${workHour.workName}"></td>
                     <td th:text="${workHour.price}"></td>
+                    <td><a href="price" th:href="@{/price}">
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
+                                                                               aria-hidden="true"></span></b></button>
+                    </a><br/></td>
+                </tr>
+                <tr>
+                    <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
+                                                                           aria-hidden="true"></span></b></button>
                 </tr>
             </table>
         </div>
