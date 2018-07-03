@@ -29,6 +29,7 @@
             </tr>
 
         </table>
+        <br>
 
         <table class="table table-bordered">
             <tr>Cena stali</tr>
@@ -41,6 +42,7 @@
                 </a><br/></td>
             </tr>
         </table>
+        <br>
 
         <table class="table table-bordered">
 
@@ -53,25 +55,59 @@
                 <td>Cena [Euro/kg]</td>
             </tr>
         </table>
+        <br>
 
         <div class="starter-template">
+            <h3>Czasochłonność</h3><br>
+            <p>Czasy operacji [sek]</p>
             <table class="table table-bordered">
                 <tr>
-                    <td>Praca</td>
-                    <td>Stawka godzinowa</td>
-                    <td>Edit</td>
+                    <th>Typ operacji</th>
+                    <th>Czas operacji [s]</th>
+                    <th>Id</th>
+                    <th>Edytuj</th>
                 </tr>
                 <tr th:each="workHour : ${hourlyWage}">
                     <td th:text="${workHour.workName}"></td>
                     <td th:text="${workHour.price}"></td>
+                    <td th:text="${workHour.id}"></td>
                     <td><a href="price" th:href="@{/price}">
                         <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
                                                                                aria-hidden="true"></span></b></button>
                     </a><br/></td>
                 </tr>
-                <tr>
+                <tr >
+                    <td colspan="4">
+
                     <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
                                                                            aria-hidden="true"></span></b></button>
+                    </td>
+                </tr>
+            </table> <br>
+
+            <p>Czas przygotowania / zakończenia [godz.]</p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Typ operacji <br> rozkrój / zakończenie</th>
+                    <th>Czas <br> rozkrój / zakończenie </th>
+                    <th>Id</th>
+                    <th>Edytuj</th>
+                </tr>
+                <tr th:each="workHour : ${hourlyWage}">
+                    <td th:text="${workHour.workName}"></td>
+                    <td th:text="${workHour.price}"></td>
+                    <td th:text="${workHour.id}"></td>
+                    <td><a href="price" th:href="@{/price}">
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
+                                                                               aria-hidden="true"></span></b></button>
+                    </a><br/></td>
+                </tr>
+                <tr >
+                    <td colspan="4">
+
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
+                                                                               aria-hidden="true"></span></b></button>
+                    </td>
                 </tr>
             </table>
         </div>
