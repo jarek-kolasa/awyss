@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<div id="container">
+    <h3>Add Client</h3>
+</div>
+<form name="client-form" ng-submit="controller.save()">
+    <div class="form-group">
+        <label for="client-name">Client Name</label>
+        <input class="form-control" id="client-name" ng-model="controller.client.name"/>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+</form>
+    <p>
+        <a href="ClientListController">Back to List</a>
+    </p>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

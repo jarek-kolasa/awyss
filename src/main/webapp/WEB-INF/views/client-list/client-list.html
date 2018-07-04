@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/xml/ns/javaee">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<div id="wrapper">
+    <div id="header">
+        <h2>Client List </h2>
+    </div>
+</div>
+        <!-- put new button: Add Client -->
+
+        <input type="button" value="Add Client" onclick="window.location.href='client-add.html'; return false;"
+               class="add-client-button"/>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Client Name</th>
+        <th></th>
+    </tr>
+
+    <c:forEach var="tempClient" items="${CLIENT_LIST}">
+
+        <!-- set up a link for each client -->
+        <c:url var="tempLink" value="ClientListController">
+            <c:param name="command" value="LOAD"/>
+            <c:param name="clientId" value="${tempClient.id}"/>
+        </c:url>
+
+        <!-- set up a link to delete a student -->
+        <c:url var="deleteLink" value="ClientListController">
+            <c:param name="command" value="DELETE"/>
+            <c:param name="clientId" value="${tempClient.id}"/>
+        </c:url>
+
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-outline-primary btn-sm"
+                   value="<fmt:message key="label.submit/>
+        </div>
+
+        <tr>
+            <td> ${tempClient.clientName} </td>
+            <td>
+                <a href="${tempLink}">Select</a>
+                |
+                <a href="${deleteLink}"
+                   onclick="if (!(confirm('Are you sure you want to delete this client?'))) return false;">
+                    Delete </a>
+            </td>
+        </tr>
+    </c:forEach>
+
+    </thead>
+    <tbody>
+    <tr ng-repeat="client in controller.clientList">
+        <td>{{client.clientName}}</td>
+        <td>
+            <button class="btn btn-danger"
+                    ng-click="controller.deleteClient(client.id)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

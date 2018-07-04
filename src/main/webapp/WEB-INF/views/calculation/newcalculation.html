@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Nowa Kalkulacja</title>
+    <title>New Calculation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
@@ -11,36 +11,42 @@
 <body>
 
 <div th:replace="fragments/layout :: header"></div>
+<form class="form-narrow form-horizontal" action="#" method="post" th:action="@{/authenticate}">
 <div class="container">
 
-    <h2><b>Nowa Kalkulacja</b></h2>
+    <h2><b>New Calculation</b></h2>
     <br>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="newcalculation/clients">List of Clients</a></li>
+                    <li><a href="newcalculation/clients/add">Add Client</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-
-
-    <select name="Klienci">
-        <option value="Klient1">Klient1</option>
-        <option value="Klient2">Klient2</option>
-        <option value="Klient3">Klient3</option>
-        <option value="Klient3">Klient3</option>
-    </select>
 <br/><br/>
-    <p>nazwa stelaża: </p>
-    <textarea cols="30" rows="1"></textarea>
-    <br/><button id="save">Zapisz</button>
-    <br>
-    <br>
-    <br>
-    <p>numer rysunku: </p>
-    <textarea cols="30" rows="1"></textarea>
-    <br/><button id="save2">Zapisz</button><br/><br>
-    <p>wykończenie</p>
-    <select name="Wykończenie">
-        <option value="farba">farba</option>
-        <option value="chrom">chrom</option>
-        <option value="surowe">surowe</option>
-    </select>
-    <button id="save3">Zapisz</button>
+    <fieldset>
+    <label>name of the frame: </label>
+    <label><textarea name="name of the frame" cols="30" rows="1"></textarea></label>
+
+    <br/>
+    <label>drawing number: </label>
+        <label><textarea name="drawing number" cols="30" rows="1"></textarea></label>
+    </fieldset>
+
+    <br/>
+    <label>finish:<br/></label>
+    <label><input type="checkbox" name="finish" value="paint" checked="checked" />paint</label>
+    <label><input type="checkbox" name="finish" value="chrome" checked="checked" />chrome</label>
+    <label><input type="checkbox" name="finish" value="raw" checked="checked" />raw</label>
+    <hr />
+    <label><h3>Operacje:</h3></label>
+    <a href="newcalculation" th:href="@{/newcalculation}"><button type="button" class="btn btn-default"><b>Create new calculation</b></button></a><br />
+
 
 
 
@@ -48,6 +54,7 @@
 
 
 </div>
+</form>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
 </html>
