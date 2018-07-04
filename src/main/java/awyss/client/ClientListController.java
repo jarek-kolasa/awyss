@@ -8,6 +8,6 @@ public class ClientListController {
 
     @GetMapping("/clientlist")
     public String clientlist(){
-        return "client/clienlist";
+        return "client-list/client-list";
     }
 }

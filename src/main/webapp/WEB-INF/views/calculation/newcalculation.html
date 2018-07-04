@@ -16,13 +16,22 @@
 
     <h2><b>New Calculation</b></h2>
     <br>
+
+    <label for="clientName">Date:</label>
+    <input type="date" name="creating a calculation" />
+
+    <br/>
+    <p>set a picture:</p>
+    <input type="file" name="photo of the frame" /><br />
+
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="newcalculation/clients">List of Clients</a></li>
-                    <li><a href="newcalculation/clients/add">Add Client</a></li>
+                    <li><a href="/clients">List of Clients</a></li>
+                    <li><a href="/clientadd">Add Client</a></li>
                 </ul>
             </li>
         </ul>
@@ -44,9 +53,11 @@
     <label><input type="checkbox" name="finish" value="chrome" checked="checked" />chrome</label>
     <label><input type="checkbox" name="finish" value="raw" checked="checked" />raw</label>
     <hr />
-    <label><h3>Operacje:</h3></label>
-    <a href="newcalculation" th:href="@{/newcalculation}"><button type="button" class="btn btn-default"><b>Create new calculation</b></button></a><br />
+    <label><h4>Operations:</h4></label><br />
 
+    <input type="button" value="add new element"  />   <!-- onClick="addTextArea();"-->
+    <input type="text" name="text_new_element" /><br />
+    <div id="div_quotes"></div>
 
 
 

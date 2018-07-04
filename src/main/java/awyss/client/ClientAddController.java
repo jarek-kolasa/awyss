@@ -8,6 +8,6 @@ public class ClientAddController {
 
     @GetMapping("/clientadd")
     public String clientadd(){
-        return "client/clientadd";
+        return "client-add/client-add";
     }
 }
