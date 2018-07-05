@@ -30,21 +30,16 @@
     <c:forEach var="tempClient" items="${CLIENT_LIST}">
 
         <!-- set up a link for each client -->
-        <c:url var="tempLink" value="ClientListController">
+        <c:url var="tempLink" value="ClientController">
             <c:param name="command" value="LOAD"/>
             <c:param name="clientId" value="${tempClient.id}"/>
         </c:url>
 
-        <!-- set up a link to delete a student -->
-        <c:url var="deleteLink" value="ClientListController">
+        <!-- set up a link to delete a client -->
+        <c:url var="deleteLink" value="ClientController">
             <c:param name="command" value="DELETE"/>
             <c:param name="clientId" value="${tempClient.id}"/>
         </c:url>
-
-        <div class="col-md-2">
-            <input type="submit" class="btn btn-outline-primary btn-sm"
-                   value="<fmt:message key="label.submit/>
-        </div>
 
         <tr>
             <td> ${tempClient.clientName} </td>
@@ -59,15 +54,7 @@
     </c:forEach>
 
     </thead>
-    <tbody>
-    <tr ng-repeat="client in controller.clientList">
-        <td>{{client.clientName}}</td>
-        <td>
-            <button class="btn btn-danger"
-                    ng-click="controller.deleteClient(client.id)">Delete</button>
-        </td>
-    </tr>
-    </tbody>
+
 </table>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
