@@ -16,13 +16,16 @@
 <form name="client-form" ng-submit="controller.save()">
     <div class="form-group">
         <label for="client-name">Client Name</label>
-        <input class="form-control" id="client-name" ng-model="controller.client.name"/>
+        <label><input type="text" name="clientName"/></label>
     </div>
-    <button class="btn btn-primary" type="submit">Save</button>
+
+        <td><label></label></td>
+        <td><input type="submit" value="Save" class="save"/></td>
+
 </form>
-    <p>
-        <a href="/clientlist">Back to List</a>
-    </p>
+<p>
+    <a href="/clientlist">Back to List</a>
+</p>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
 </html>
