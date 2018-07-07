@@ -24,8 +24,11 @@
         <table class="table table-bordered">
 
             <tr>
-                <td><b>Aktualny kurs Euro</b></td>
-                <td>Euro</td>
+                <td><b>Aktualny kurs Euro [zł]</b></td>
+                <!--<td th:text="${euro}"> </td>-->
+            </tr>
+            <tr>
+                <td th:text="${euro.value}"></td>
             </tr>
 
         </table>
@@ -76,20 +79,21 @@
                                                                                aria-hidden="true"></span></b></button>
                     </a><br/></td>
                 </tr>
-                <tr >
+                <tr>
                     <td colspan="4">
 
-                    <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
-                                                                           aria-hidden="true"></span></b></button>
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
+                                                                               aria-hidden="true"></span></b></button>
                     </td>
                 </tr>
-            </table> <br>
+            </table>
+            <br>
 
             <p>Czas przygotowania / zakończenia [godz.]</p>
             <table class="table table-bordered">
                 <tr>
                     <th>Typ operacji <br> rozkrój / zakończenie</th>
-                    <th>Czas <br> rozkrój / zakończenie </th>
+                    <th>Czas <br> rozkrój / zakończenie</th>
                     <th>Id</th>
                     <th>Edytuj</th>
                 </tr>
@@ -102,7 +106,7 @@
                                                                                aria-hidden="true"></span></b></button>
                     </a><br/></td>
                 </tr>
-                <tr >
+                <tr>
                     <td colspan="4">
 
                         <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
