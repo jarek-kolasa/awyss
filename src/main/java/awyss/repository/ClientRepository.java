@@ -13,9 +13,9 @@ import java.util.Optional;
 public interface ClientRepository extends JpaRepository<Client,Long> {
 
     Boolean existsByClientNameIgnoreCase( String clientName );
-
-    List<Client> findByClientName( String clientName );
-    List<Client> findByClientNameContaining( String clientName );
+//
+//    List<Client> findByClientName( String clientName );
+//    List<Client> findByClientNameContaining( String clientName );
     List<Client> findByClientNameContainingIgnoreCase( String clientName );
 
     @Query(value = "SELECT * FROM clients WHERE clientName = :clientname", nativeQuery = true)
