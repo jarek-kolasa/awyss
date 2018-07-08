@@ -2,6 +2,7 @@ package awyss.calculation;
 
 import awyss.calculation.operationTime.OperationTime;
 import awyss.calculation.operationTime.OperationTimeService;
+import awyss.calculation.totalTime.TotalTime;
 import awyss.calculation.totalTime.TotalTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,9 @@ public class NewCalculationController {
 
     @GetMapping("/newcalculation")
     public String totalTime(Model model){
-        model.addAttribute( "totalTime",totalTimeService.value );
+        model.addAttribute( "totalTime",totalTimeService.countingTotalOperationTime().getTotalTime());
+        model.addAttribute( "operationTime",operationTimeService.getStartOperationTime().operationTime);
+//        totalTimeService.countingTotalOperationTime().getTotalTime();
         return "calculation/newcalculation";
     }
 

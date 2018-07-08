@@ -1,19 +1,36 @@
 package awyss.calculation.totalTime;
 
+import awyss.calculation.numberOfRepetitions.NumberOfRepetitions;
+import awyss.calculation.operationTime.OperationTime;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 @Service
 public class TotalTimeService {
 
-    public double value = totalOperationTime();
 
-    public TotalTimeService() throws IOException {
-    }
 
-    private double totalOperationTime() throws IOException {
+    public TotalTime countingTotalOperationTime( ){
 
-        return value;
-    }
+        NumberOfRepetitions numberOfRepetitions = new NumberOfRepetitions();
+        int x=numberOfRepetitions.getNumberOfRepetitions();
+
+        OperationTime operationTime = new OperationTime();
+        double y = operationTime.getOperationTime();
+
+//        numberOfRepetitions numberOfRepetitions;
+
+        TotalTime totalTime = new TotalTime();
+
+//        OperationTime operationTime;
+
+//        double calculatedTime = operationTime.getOperationTime()*numberOfRepetitions.getNumberOfRepetitions();
+        double calculatedTime = x*y;
+
+        totalTime.setTotalTime( calculatedTime );
+
+
+        return  totalTime;
+
+}
+
 }

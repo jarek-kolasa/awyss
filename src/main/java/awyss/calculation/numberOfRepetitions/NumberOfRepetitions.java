@@ -1,5 +1,4 @@
-package awyss.calculation.totalTime;
-
+package awyss.calculation.numberOfRepetitions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +7,6 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,13 +15,15 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "total_operation_time")
-public class TotalTime {
+@Table(name = "number_of_repetitions")
+public class NumberOfRepetitions {
 
     @Id
-    @GeneratedValue
     public Long id;
 
     @NotBlank
-    public double totalTime;
+    public int numberOfRepetitions;
+
+
+
 }

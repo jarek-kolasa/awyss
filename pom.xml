@@ -108,17 +108,7 @@
             <version>2.2</version>
             <scope>provided</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.hsqldb</groupId>-->
-            <!--<artifactId>hsqldb</artifactId>-->
-        <!--</dependency>-->
-        <!--
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4.1207</version>
-        </dependency>
-        -->
+
         <!-- Spring DataController -->
         <dependency>
             <groupId>org.springframework.data</groupId>
