@@ -1,4 +1,4 @@
-package awyss.calculation.totalTime;
+package awyss.calculation.operationTime;
 
 
 import lombok.AllArgsConstructor;
@@ -16,12 +16,14 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "total_operation_time")
-public class TotalTime {
+@Table(name = "operation_time")
+public class OperationTime {
+
 
     @Id
     public Long id;
 
     @NotBlank
-    public double totalTime;
+    public double operationTime;
+
 }
