@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -28,11 +29,11 @@ public class DataController {
     private SteelPriceService steelPriceService;
 
     @GetMapping("/data")
-    public String data(Model model) {
+    public String data(Model model) throws IOException {
         List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
         model.addAttribute("hourlyWage", hourlyWages);
-        model.addAttribute("euro", euroService);
-        model.addAttribute("price", steelPriceService);
+        model.addAttribute("euro", euroService.euroLastApplicableValue());
+        model.addAttribute("price", steelPriceService.getLastValue());
         return "data/data";
     }
 
@@ -43,8 +44,9 @@ public class DataController {
 
     @PutMapping("/price")
     @ResponseStatus(HttpStatus.OK)
-    public SteelPrice priceOfSteel(@PathVariable Long id, @Valid @RequestBody SteelPrice steelPrice, BindingResult bindingResult){
-        return steelPriceService.updatePrice(steelPrice, id, bindingResult);
+    public String updatePriceOfSteel(@Valid @ModelAttribute("steelPrice") SteelPrice steelPrice, BindingResult bindingResult){
+        steelPriceService.updatePrice(steelPrice, bindingResult);
+        return "data/price";
     }
 
 }

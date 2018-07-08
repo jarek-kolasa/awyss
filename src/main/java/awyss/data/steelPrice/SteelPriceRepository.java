@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface SteelPriceRepository extends JpaRepository<SteelPrice, Long> {
 
 
+
+
 }

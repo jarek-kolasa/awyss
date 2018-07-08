@@ -4,18 +4,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import java.time.LocalDate;
+
 @Service
 public class SteelPriceService {
 
     @Autowired
     SteelPriceRepository steelPriceRepository;
 
+    SteelPrice steelPrice;
 
-    public SteelPrice updatePrice(SteelPrice newsteelPrice, Long id, BindingResult bindingResult){
+    public SteelPrice getLastValue() {
+        SteelPrice steelPrice = new SteelPrice();
 
-        SteelPrice currentSteelPrice = steelPriceRepository.getOne(id);
+        steelPrice.setSteelPrice(0.0);
 
-        currentSteelPrice.setSteelPrice(newsteelPrice.getSteelPrice());
-        return steelPriceRepository.save(currentSteelPrice);
+        return steelPrice;
+    }
+
+
+    public SteelPrice updatePrice(SteelPrice newSteelPrice, BindingResult bindingResult) {
+
+        if(steelPrice == null){
+            steelPrice = new SteelPrice(Long.valueOf(1),0.0,LocalDate.MIN,LocalDate.now());
+        }
+
+        steelPrice.setSteelPrice(newSteelPrice.getSteelPrice());
+        return steelPriceRepository.save(steelPrice);
     }
 }

@@ -1,13 +1,13 @@
 package awyss.data.steelPrice;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -17,6 +17,18 @@ import javax.persistence.Table;
 @Table(name = "price_of_steel")
 public class SteelPrice {
 
+    @Id
+    @GeneratedValue
+    public Long id;
+
     @NotBlank
     public double steelPrice;
+
+    @NotBlank
+    public LocalDate startDate;
+
+
+    public LocalDate endDate;
+
+
 }
