@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Service
 public class EuroService {
 
-    public String value = euroLastApplicableValue();
+//    public String value = euroLastApplicableValue();
 
     public EuroService() throws IOException {
     }
