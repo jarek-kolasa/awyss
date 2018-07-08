@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Czasochłonność</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen"
+          th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}"/>
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<div class="container">
+    <h1>
+        <p class="lead text-center">
+            <b>Czasochłonność</b>
+        </p>
+    </h1>
+
+
+    <div class="starter-template">
+
+                <table class="table table-bordered">
+
+            <tr>
+                <td>Stawka godzinowa [zł]</td>
+                <td>Tutaj wpisać stawkę godzinową</td>
+            </tr>
+            <tr>
+                <td>Cena stali</td>
+                <td>Cena [Euro/kg]</td>
+            </tr>
+        </table>
+        <br>
+
+        <div class="starter-template">
+            <h3>Czasochłonność</h3><br>
+            <p>Czasy operacji [sek]</p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Typ operacji</th>
+                    <th>Czas operacji [s]</th>
+                    <th>Id</th>
+                    <th>Edytuj</th>
+                </tr>
+                <tr th:each="workHour : ${hourlyWage}">
+                    <td th:text="${workHour.workName}"></td>
+                    <td th:text="${workHour.price}"></td>
+                    <td th:text="${workHour.id}"></td>
+                    <td><a href="price" th:href="@{/price}">
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
+                                                                               aria-hidden="true"></span></b></button>
+                    </a><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
+                                                                               aria-hidden="true"></span></b></button>
+                    </td>
+                </tr>
+            </table>
+            <br>
+
+            <p>Czas przygotowania / zakończenia [godz.]</p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Typ operacji <br> rozkrój / zakończenie</th>
+                    <th>Czas <br> rozkrój / zakończenie</th>
+                    <th>Id</th>
+                    <th>Edytuj</th>
+                </tr>
+                <tr th:each="workHour : ${hourlyWage}">
+                    <td th:text="${workHour.workName}"></td>
+                    <td th:text="${workHour.price}"></td>
+                    <td th:text="${workHour.id}"></td>
+                    <td><a href="price" th:href="@{/price}">
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
+                                                                               aria-hidden="true"></span></b></button>
+                    </a><br/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+
+                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
+                                                                               aria-hidden="true"></span></b></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <br>
+
+        <div>
+            <a href="menu" th:href="@{/menu}">
+                <button type="button" class="btn btn-default"><b>Back to Menu</b></button>
+            </a><br/>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

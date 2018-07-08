@@ -11,12 +11,12 @@
 <body>
 
 <div th:replace="fragments/layout :: header"></div>
-<form class="form-narrow form-horizontal" action="#" method="post" th:action="@{/authenticate}">
+<form class="table-bordered form-horizontal" action="#" method="post" th:action="@{/authenticate}">
 <div class="container">
 
     <h2><b>New Calculation</b></h2>
     <br>
-
+    <div class="starter-template">
     <label for="clientName">Date:</label>
     <input type="date" name="creating a calculation" />
 
@@ -103,7 +103,7 @@
 
 
 
-
+</div>
 
 </div>
 </form>
