@@ -17,10 +17,10 @@
         <div th:replace="fragments/components :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
     <p class="lead text-center">
-        Witaj Szanowny Panie,zapraszamy...
+        Witaj Szanowny Panie,zapraszamy do skorzystania z tej wyśmienitej aplikacji do wyceny metalowych stelaży ;)
     </p>
 
-    <a href="menu" th:href="@{/menu}"><button type="button" class="btn btn-default"><b>Menu</b></button></a><br />
+
 
     <div th:replace="fragments/layout :: footer"></div>
 </div>
