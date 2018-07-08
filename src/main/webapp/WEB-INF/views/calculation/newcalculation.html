@@ -56,43 +56,50 @@
 
     <label><h4>Operations:</h4></label><br />
 
-    <input type="button" value="add new element"  />   <!-- onClick="addTextArea();"-->
-    <input type="text" name="text_new_element" /><br />
-    <div id="div_quotes"></div>
-    <label>operation description:</label>
-    <textarea name="text_operation_description" rows="2" cols="30">type your description.... </textarea><br />
-    <label>typ</label>
-    <select name="types">
-        <option value="giec.">giec.</option>
-        <option value="ślus.">ślus.</option>
-        <option value="spaw.">spaw.</option>
-        <option value="szlif.">szlif.</option>
-        <option value="malar.">malar.</option>
-        <option value="mon.">mon.</option>
-    </select><br />
-    <label>operation time[s]:</label>
-    <input type="text" name="operation time" /><br />
-    <label>the number of repetitions:</label>
-    <input type="text" name="the number of repetitions" /><br />
-    <label>result(poprawić.ale to potem):</label>
-    <input type="text" name="result" /><br />
-    <label>quantity:</label>
-    <select name="types">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select><br />
-    <label>total time:</label>
-    <input type="text" name="result" /><br />
-    <label>total cost:</label>
-    <input type="text" name="total cost" /><br />
+    <!--<input type="button" value="add new element"  />   &lt;!&ndash; onClick="addTextArea();"&ndash;&gt;-->
+    <!--<input type="text" name="text_new_element" /><br />-->
+    <!--<div id="div_quotes"></div><br />-->
+
+
+    <table class="table table-striped">
+        <tr>
+            <th class="col-sm-1"></th>
+            <th >add new element:</th>
+            <th >operation description:</th>
+            <th >typ</th>
+            <th >operation time:</th>
+            <th >total time:</th>
+            <th >total cost:</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="text" name="text_new_element" /></td>
+            <td><input type="text" name="text_operation_description"></td>
+            <td><select name="types">
+                <option value="giec.">giec.</option>
+                <option value="ślus.">ślus.</option>
+                <option value="spaw.">spaw.</option>
+                <option value="szlif.">szlif.</option>
+                <option value="malar.">malar.</option>
+                <option value="mon.">mon.</option>
+            </select></td>
+            <td><input type="text" name="operation time" /></td>
+            <td><input type="text" name="result" /></td>
+            <td><input type="text" name="total cost" /></td>
+
+            <!--<td><input type="text" class="form-control input-button-right">-->
+            <!--th:field="*{contactPhones[__${rowStat.index}__].phoneNumber}"/>-->
+            <!--<span class="col-sm-1 row-delete-button">-->
+            <!--<button type="submit" class="btn btn-default">-->
+            <!--&lt;!&ndash;th:value="*{contactPhones[__${rowStat.index}__].contactPhoneId}"&ndash;&gt;-->
+            <!--&lt;!&ndash;name="removeContactPhone" th:disabled="${appSettings.getIsDemoSite()}">&ndash;&gt;-->
+
+            <!--</button>-->
+            <!--</span>-->
+            </td>
+        </tr>
+    </table>
+
 
 
 
