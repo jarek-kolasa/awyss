@@ -51,7 +51,7 @@
     <label>finish:<br/></label>
     <label><input type="checkbox" name="finish" value="paint" checked="checked" />paint</label>
     <label><input type="checkbox" name="finish" value="chrome" checked="checked" />chrome</label>
-    <label><input type="checkbox" name="finish" value="raw" checked="checked" />raw</label>
+    <label><input type="checkbox" name="finish" value="raw" checked="checked" />raw</label><br />
 
 
     <label><h4>Operations:</h4></label><br />
@@ -68,6 +68,7 @@
             <th >operation description:</th>
             <th >typ</th>
             <th >operation time:</th>
+            <th>number of repetitions:</th>
             <th >total time:</th>
             <th >total cost:</th>
         </tr>
@@ -84,8 +85,22 @@
                 <option value="mon.">mon.</option>
             </select></td>
             <td><input type="text" name="operation time" /></td>
-            <td><input type="text" name="result" /></td>
+            <td><select name="number of repetitions:">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select></td>
+            <td th:text="${totalTime.value}"></td>
             <td><input type="text" name="total cost" /></td>
+            <!--<td><input type="text" name="total cost" /></td>-->
+
 
             <!--<td><input type="text" class="form-control input-button-right">-->
             <!--th:field="*{contactPhones[__${rowStat.index}__].phoneNumber}"/>-->
