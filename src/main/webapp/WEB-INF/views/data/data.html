@@ -35,11 +35,13 @@
         <br>
 
         <table class="table table-bordered">
-            <tr>Cena stali</tr>
             <tr>
-                <td><b>Cena stali [Euro/kg]</b></td>
-                <td>Tutaj wpisać cenę stali</td>
-                <td><a href="data" th:href="@{/data}">
+                <th>Cena stali [Euro/kg]</th>
+                <th>Edytuj</th>
+            </tr>
+            <tr>
+                <td th:text="${price.steelPrice}"></td>
+                <td><a href="data" th:href="@{/price}">
                     <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
                                                                            aria-hidden="true"></span></b></button>
                 </a><br/></td>

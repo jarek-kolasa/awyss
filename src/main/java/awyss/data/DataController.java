@@ -18,12 +18,21 @@ public class DataController {
     @Autowired
     private EuroService euroService;
 
+    @Autowired
+    private SteelPrice steelPrice;
+
     @GetMapping("/data")
-    public String jobList(Model model) {
+    public String data(Model model) {
         List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
         model.addAttribute("hourlyWage", hourlyWages);
         model.addAttribute("euro", euroService);
+        model.addAttribute("price", steelPrice);
         return "data/data";
+    }
+
+    @GetMapping("/price")
+    public String priceChange() {
+        return "data/price";
     }
 
 }
