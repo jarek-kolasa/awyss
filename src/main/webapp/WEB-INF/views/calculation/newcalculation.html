@@ -3,8 +3,9 @@
 <head>
     <title>New Calculation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
-    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen"
+          th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}"/>
     <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
@@ -12,100 +13,93 @@
 
 <div th:replace="fragments/layout :: header"></div>
 <form class="table-bordered form-horizontal" action="#" method="post" th:action="@{/authenticate}">
-<div class="container">
+    <div class="container">
 
-    <h2><b>New Calculation</b></h2>
-    <br>
-    <div class="starter-template">
-    <label for="clientName">Date:</label>
-    <input type="date" name="creating a calculation" />
+        <h2><b>New Calculation</b></h2>
+        <br>
+        <div class="starter-template">
+            <label for="clientName">Date:</label>
+            <input type="date" name="creating a calculation"/>
 
-    <br/>
-    <p>set a picture:</p>
-    <input type="file" name="photo of the frame" /><br />
+            <br/>
+            <p>set a picture:</p>
+            <input type="file" name="photo of the frame"/><br/>
 
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/clientlist">List of Clients</a></li>
-                    <li><a href="/clientadd">Add Client</a></li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Clients<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/clientlist">List of Clients</a></li>
+                            <li><a href="/clientadd">Add Client</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
+            </div>
+
+            <br/><br/>
+            <fieldset>
+                <label>name of the frame: </label>
+                <label><textarea name="name of the frame" cols="30" rows="1"></textarea></label>
+
+                <br/>
+                <label>drawing number: </label>
+                <label><textarea name="drawing number" cols="30" rows="1"></textarea></label>
+            </fieldset>
+
+            <br/>
+            <label>finish:<br/></label>
+            <label><input type="checkbox" name="finish" value="paint" checked="checked"/>paint</label>
+            <label><input type="checkbox" name="finish" value="chrome" checked="checked"/>chrome</label>
+            <label><input type="checkbox" name="finish" value="raw" checked="checked"/>raw</label><br/>
+
+
+            <label><h4>Operations:</h4></label><br/>
+
+
+
+            <table class="table table-striped">
+                <tr>
+                    <th class="col-sm-1"></th>
+                    <th>add new element:</th>
+                    <th>operation description:</th>
+                    <th>typ</th>
+                    <th>operation time:</th>
+                    <th>number of repetitions:</th>
+                    <th>total time:</th>
+                    <th>total cost:</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="text" name="text_new_element"/></td>
+                    <td><input type="text" name="text_operation_description"></td>
+                    <td><select name="types">
+                        <option value="giec.">giec.</option>
+                        <option value="ślus.">ślus.</option>
+                        <option value="spaw.">spaw.</option>
+                        <option value="szlif.">szlif.</option>
+                        <option value="malar.">malar.</option>
+                        <option value="mon.">mon.</option>
+                    </select></td>
+                    <td><input type="text" name="operation time"/></td>
+                    <!--<td th:text="${operationTime}"></td>-->
+                    <td><input type="text" name="number of repetitions"/></td>
+                    <td th:text="${totalTime}"></td>
+                    <td><input type="text" name="total cost"/></td>
+                    <td><button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></b></button></td>
+                    <td><button type="button" class="btn btn-info">Save</button></td>
+
+                </tr>
+            </table>
+
+
+        </div>
+
     </div>
-
-<br/><br/>
-    <fieldset>
-    <label>name of the frame: </label>
-    <label><textarea name="name of the frame" cols="30" rows="1"></textarea></label>
-
-    <br/>
-    <label>drawing number: </label>
-        <label><textarea name="drawing number" cols="30" rows="1"></textarea></label>
-    </fieldset>
-
-    <br/>
-    <label>finish:<br/></label>
-    <label><input type="checkbox" name="finish" value="paint" checked="checked" />paint</label>
-    <label><input type="checkbox" name="finish" value="chrome" checked="checked" />chrome</label>
-    <label><input type="checkbox" name="finish" value="raw" checked="checked" />raw</label>
-
-
-    <label><h4>Operations:</h4></label><br />
-
-    <!--<input type="button" value="add new element"  />   &lt;!&ndash; onClick="addTextArea();"&ndash;&gt;-->
-    <!--<input type="text" name="text_new_element" /><br />-->
-    <!--<div id="div_quotes"></div><br />-->
-
-
-    <table class="table table-striped">
-        <tr>
-            <th class="col-sm-1"></th>
-            <th >add new element:</th>
-            <th >operation description:</th>
-            <th >typ</th>
-            <th >operation time:</th>
-            <th >total time:</th>
-            <th >total cost:</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="text" name="text_new_element" /></td>
-            <td><input type="text" name="text_operation_description"></td>
-            <td><select name="types">
-                <option value="giec.">giec.</option>
-                <option value="ślus.">ślus.</option>
-                <option value="spaw.">spaw.</option>
-                <option value="szlif.">szlif.</option>
-                <option value="malar.">malar.</option>
-                <option value="mon.">mon.</option>
-            </select></td>
-            <td><input type="text" name="operation time" /></td>
-            <td><input type="text" name="result" /></td>
-            <td><input type="text" name="total cost" /></td>
-
-            <!--<td><input type="text" class="form-control input-button-right">-->
-            <!--th:field="*{contactPhones[__${rowStat.index}__].phoneNumber}"/>-->
-            <!--<span class="col-sm-1 row-delete-button">-->
-            <!--<button type="submit" class="btn btn-default">-->
-            <!--&lt;!&ndash;th:value="*{contactPhones[__${rowStat.index}__].contactPhoneId}"&ndash;&gt;-->
-            <!--&lt;!&ndash;name="removeContactPhone" th:disabled="${appSettings.getIsDemoSite()}">&ndash;&gt;-->
-
-            <!--</button>-->
-            <!--</span>-->
-            </td>
-        </tr>
-    </table>
-
-
-
-
-</div>
-
-</div>
 </form>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
