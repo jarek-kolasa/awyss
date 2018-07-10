@@ -3,10 +3,7 @@ package awyss.data.steelPrice;
 import lombok.*;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
@@ -22,13 +19,12 @@ public class SteelPrice {
     public Long id;
 
     @NotBlank
-    public double steelPrice;
+    public String steelPrice;
 
-    @NotBlank
-    public LocalDate startDate;
+    public LocalDate startDate = LocalDate.now();
 
 
-    public LocalDate endDate;
+//    public LocalDate endDate;
 
 
 }

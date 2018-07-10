@@ -1,5 +1,6 @@
 package awyss.data;
 
+import awyss.data.steelPrice.SteelPriceService;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,7 +12,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -134,6 +137,12 @@ public class DataTests {
         sentenceBuilder.append(rates);
 
         System.out.println(sentenceBuilder);
+    }
+
+    @Test
+    public void testStartValueOfSteelPrice(){
+
+
     }
 
 }

@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -33,19 +36,25 @@ public class DataController {
         List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
         model.addAttribute("hourlyWage", hourlyWages);
         model.addAttribute("euro", euroService.euroLastApplicableValue());
-        model.addAttribute("price", steelPriceService.getLastValue());
+        model.addAttribute("price", steelPriceService.getLastValue().getSteelPrice());
         return "data/data";
     }
 
     @GetMapping("/price")
-    public String priceChange() {
+    public String priceChange(Model model) {
+        model.addAttribute("steelPrice", steelPriceService.getLastValue());
         return "data/price";
     }
 
-    @PutMapping("/price")
+    @PostMapping("/price")
     @ResponseStatus(HttpStatus.OK)
-    public String updatePriceOfSteel(@Valid @ModelAttribute("steelPrice") SteelPrice steelPrice, BindingResult bindingResult){
-        steelPriceService.updatePrice(steelPrice, bindingResult);
+    public String updatePriceOfSteel(@Valid @ModelAttribute("steelPrice") SteelPrice steelPrice){
+        System.out.println(steelPrice.getId());
+        System.out.println(steelPrice.getSteelPrice());
+//        System.out.println(steelPrice.getStartDate());
+//        System.out.println(steelPrice.getEndDate());
+
+        steelPriceService.updatePrice(steelPrice);
         return "data/price";
     }
 

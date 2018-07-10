@@ -18,11 +18,6 @@ import java.time.LocalDate;
 @Service
 public class EuroService {
 
-//    public String value = euroLastApplicableValue();
-
-    public EuroService() throws IOException {
-    }
-
 
     public String dateTime(){
         LocalDate today = LocalDate.now();
@@ -50,8 +45,6 @@ public class EuroService {
         if(today.getDayOfWeek() == DayOfWeek.SUNDAY){
             today = LocalDate.now().minusDays(2);
         }
-
-        System.out.println(today);
 
         StringBuffer sentenceBuilder = new StringBuffer();
         String currentDate = today.toString();

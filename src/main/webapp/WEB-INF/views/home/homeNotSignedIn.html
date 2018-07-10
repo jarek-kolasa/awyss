@@ -21,7 +21,7 @@
             Zaloguj się
         </p>
         <p>
-            <a class="btn btn-success btn-lg" id="signup">Logowanie</a>
+            <a class="btn btn-success btn-lg" id="signin">Logowanie</a>
         </p>
     </div>
     <div th:replace="fragments/layout :: footer">&copy; 2018 The Static Templates</div>
@@ -29,19 +29,19 @@
 <script th:inline="javascript" type="text/javascript">
     /* Fill in modal with content loaded with Ajax */
     $(document).ready(function () {
-        $('#signup').on('click', function () {
-            $("#signup-modal").modal();
-            $("#signup-modal-body").text("");
+        $('#signin').on('click', function () {
+            $("#signin-modal").modal();
+            $("#signin-modal-body").text("");
             $.ajax({
-                url: "signup",
+                url: "signin",
                 cache: false
             }).done(function (html) {
-                $("#signup-modal-body").append(html);
+                $("#signin-modal-body").append(html);
             });
         })
     });
 </script>
 <!-- Signup modal -->
-<div th:replace="fragments/components :: modal(id='signup-modal', title='Signup')"></div>
+<div th:replace="fragments/components :: modal(id='signin-modal', title='Signin')"></div>
 </body>
 </html>
