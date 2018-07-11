@@ -23,7 +23,7 @@ public class ClientService {
         if (!clientRepository.existsById(id)) {
             throw new NotFoundException(String.format("Client with id %s not found", id));
         }
-        clientRepository.deleteById(id);
+        clientRepository.delete(id);
     }
 
     public Client getById( Long id) {
@@ -41,6 +41,7 @@ public class ClientService {
         return clientRepository.findByClientNameContainingIgnoreCase(
                 clientName);
     }
+
 
 
     public Client create(Client client,BindingResult bindingResult){
@@ -62,4 +63,6 @@ public class ClientService {
     public Client saveClient( Client client ) {
         return clientRepository.save( client );
     }
+
+
 }

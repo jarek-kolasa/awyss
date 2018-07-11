@@ -10,22 +10,24 @@
 </head>
 <body>
 <div th:replace="fragments/layout :: header"></div>
-<div id="container">
-    <h3>Add Client</h3>
-</div>
-<form name="client-form" ng-submit="controller.save()">
-    <div class="form-group">
-        <label for="client-name">Client Name</label>
-        <label><input type="text" name="clientName"/></label>
+
+<div class="container">
+    <h2>New Client</h2>
+    <div class="col-md-4">
+        <form th:object="${client}" th:action="@{clientadd}" action="#" method="post">
+            <input type="text" th:field="*{clientName}" class="form-control"
+                   placeholder="Client Name" />
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <input type="submit" class="btn btn-primary" value="Save">
+            <br /><br />
+            <p>
+                <a href="/clientlist">Back to List</a>
+            </p>
+        </form>
     </div>
+</div>
 
-        <td><label></label></td>
-        <td><input type="submit" value="Save" class="save"/></td>
 
-</form>
-<p>
-    <a href="/clientlist">Back to List</a>
-</p>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
 </html>
