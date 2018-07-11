@@ -2,34 +2,30 @@ package awyss.data.steelPrice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
-import java.time.LocalDate;
+import java.util.List;
+
 
 @Service
 public class SteelPriceService {
 
+
     @Autowired
     SteelPriceRepository steelPriceRepository;
 
-    SteelPrice steelPrice;
 
     public SteelPrice getLastValue() {
-        SteelPrice steelPrice = new SteelPrice();
 
-        steelPrice.setSteelPrice(0.0);
+        List<SteelPrice> steelPriceList = steelPriceRepository.findAll();
+
+        SteelPrice steelPrice = steelPriceList.get(steelPriceList.size()-1);
 
         return steelPrice;
     }
 
 
-    public SteelPrice updatePrice(SteelPrice newSteelPrice, BindingResult bindingResult) {
+    public SteelPrice updatePrice(SteelPrice newSteelPrice) {
 
-        if(steelPrice == null){
-            steelPrice = new SteelPrice(Long.valueOf(1),0.0,LocalDate.MIN,LocalDate.now());
-        }
-
-        steelPrice.setSteelPrice(newSteelPrice.getSteelPrice());
-        return steelPriceRepository.save(steelPrice);
+        return steelPriceRepository.save(newSteelPrice);
     }
 }
