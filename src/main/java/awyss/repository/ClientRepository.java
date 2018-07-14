@@ -12,18 +12,18 @@ import java.util.Optional;
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Long> {
 
+    //    Client findByName(String clientName);
+
     Boolean existsByClientNameIgnoreCase( String clientName );
-//
-//    List<Client> findByClientName( String clientName );
+
+    //    List<Client> findByClientName( String clientName );
 //    List<Client> findByClientNameContaining( String clientName );
     List<Client> findByClientNameContainingIgnoreCase( String clientName );
 
-    @Query(value = "SELECT * FROM clients WHERE clientName = :clientname", nativeQuery = true)
-    List<Client> search( @Param("clientname") String clientName );
+    @Query(value = "SELECT * FROM clients WHERE clientName = :clientName", nativeQuery = true)
+    List<Client> search( @Param("clientName") String clientName );
 
     boolean existsById( Long id );
-
-    void deleteById( Long id );
 
     Optional<Client> findById( Long id );
 }

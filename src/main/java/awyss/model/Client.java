@@ -8,13 +8,13 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 
+@Entity
+@Table(name="clients")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name="clients")
-public class Client {
+public class Client  {
 
 
     @Id
