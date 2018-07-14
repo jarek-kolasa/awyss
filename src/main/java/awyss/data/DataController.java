@@ -36,7 +36,7 @@ public class DataController {
         List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
         model.addAttribute("hourlyWage", hourlyWages);
         model.addAttribute("euro", euroService.euroLastApplicableValue());
-        model.addAttribute("price", steelPriceService.getLastValue().getSteelPrice());
+        model.addAttribute("price", steelPriceService.getLastValue());
         return "data/data";
     }
 
