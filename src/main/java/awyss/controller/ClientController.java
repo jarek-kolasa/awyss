@@ -24,6 +24,32 @@ public class ClientController {
 
     private Long clientId;
 
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+//
+//    @RequestMapping(value = "save", method = RequestMethod.POST)
+//    public String save(Client client){
+//        clientRepository.save(client);
+//        return "redirect:/clientlist";
+//
+//    }
+//
+//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+//    public String deleteClient(@PathVariable("id") Long clientId, Model model) {
+//        clientRepository.deleteById(clientId);
+//        return "redirect:/clientlist";
+//    }
+
+
+    @RequestMapping(value = "getclients", method = RequestMethod.GET)
+    public @ResponseBody List<Client> getClients() {
+        return (List<Client>)clientRepository.findAll();
+    }
+
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Client create(
@@ -31,29 +57,22 @@ public class ClientController {
             BindingResult bindingResult) {
         return clientService.create(client, bindingResult);
     }
-
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    public String save(Client client){
-        clientRepository.save(client);
-        return "Redirect:/clientlist";
-    }
-
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Client> getClients() {
-        return clientRepository.findAll();
-    }
+//
+//
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Client> search() {
+//        return clientRepository.findAll();
+//    }
 //
 //    @DeleteMapping("/{id}")
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
 //    public void delete(@PathVariable("id") Long productId) {
 //        clientService.delete(clientId);
 //    }
+//
+//
 
-//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-//    public String deleteClient(@PathVariable("id") Long id, Model model) {
-//        clientRepository.deleteById(id);
-//        return "redirect:/client-list";
-//    }
+
+
 }
