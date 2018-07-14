@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class HourlyWage implements Serializable {
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private Long id;
 

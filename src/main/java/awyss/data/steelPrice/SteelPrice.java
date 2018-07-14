@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -18,8 +19,7 @@ public class SteelPrice {
     @GeneratedValue
     public Long id;
 
-    @NotBlank
-    public String steelPrice;
+    public Double steelPrice;
 
     public LocalDate startDate = LocalDate.now();
 
