@@ -51,9 +51,9 @@ public class ClientController {
 //        clientService.delete(clientId);
 //    }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteClient(@PathVariable("id") Long clientId, Model model) {
-        clientRepository.deleteById(clientId);
-        return "redirect:/client-list";
-    }
+//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+//    public String deleteClient(@PathVariable("id") Long id, Model model) {
+//        clientRepository.deleteById(id);
+//        return "redirect:/client-list";
+//    }
 }
