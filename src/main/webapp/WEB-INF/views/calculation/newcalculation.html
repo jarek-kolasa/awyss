@@ -18,13 +18,18 @@
         <h2><b>New Calculation</b></h2>
         <br>
         <div class="starter-template">
-            <label for="clientName">Date:</label>
-            <input type="date" name="creating a calculation"/>
-
-            <br/>
-            <p>set a picture:</p>
-            <input type="file" name="photo of the frame"/><br/>
-
+            <table class="table table-striped">
+                <tr>
+                    <th> <label for="clientName">Date:</label></th>
+                    <th><p>set a picture:</p></th>
+                </tr>
+                <tr>
+                    <td><input type="date" name="creating a calculation"/></td>
+                    <td> <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </td>
+                </tr>
+            </table>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
