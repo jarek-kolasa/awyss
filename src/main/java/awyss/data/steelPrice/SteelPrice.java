@@ -4,7 +4,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.DecimalMin;
 import java.time.LocalDate;
 
 @Getter
@@ -19,6 +19,7 @@ public class SteelPrice {
     @GeneratedValue
     public Long id;
 
+    @DecimalMin("0.0")
     public Double steelPrice;
 
     public LocalDate startDate = LocalDate.now();

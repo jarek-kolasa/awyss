@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 @Service
@@ -19,13 +20,13 @@ public class SteelPriceService {
 
         List<SteelPrice> steelPriceList = steelPriceRepository.findAll();
 
-        if(steelPriceList.size() == 0){
+        if (steelPriceList.size() == 0) {
             SteelPrice newSteelPrice = new SteelPrice();
             newSteelPrice.setStartDate(LocalDate.now());
             newSteelPrice.setSteelPrice(0.0);
             steelPriceList.add(newSteelPrice);
         }
-        SteelPrice steelPrice = steelPriceList.get(steelPriceList.size()-1);
+        SteelPrice steelPrice = steelPriceList.get(steelPriceList.size() - 1);
 
         return steelPrice;
     }
@@ -35,4 +36,5 @@ public class SteelPriceService {
 
         return steelPriceRepository.save(newSteelPrice);
     }
+
 }

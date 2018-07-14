@@ -23,5 +23,5 @@ public class HourlyWage implements Serializable {
     private String workName;
 
     @Column(name = "price")
-    private Long price;
+    private Double price;
 }
