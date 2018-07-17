@@ -1,11 +1,11 @@
 package awyss.data.hourlyWage;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -24,4 +24,12 @@ public class HourlyWage implements Serializable {
 
     @Column(name = "price")
     private Double price;
+
+    @Column(name = "start_date_work")
+    private LocalDateTime workStartDate;
+
+    @Column(name = "end_date_work")
+    private LocalDateTime workEndDate;
+
+
 }

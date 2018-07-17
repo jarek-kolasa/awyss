@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -19,6 +20,7 @@ public class SteelPrice {
     @GeneratedValue
     public Long id;
 
+    @NotNull
     @DecimalMin("0.0")
     public Double steelPrice;
 
