@@ -59,16 +59,16 @@
                     <th>Edytuj</th>
                 </tr>
                 <tr th:each="workHour : ${hourlyWage}">
+                    <td th:text="${workHour.id}"></td>
                     <td th:text="${workHour.workName}"></td>
                     <td th:text="${workHour.price}"></td>
-                    <td th:text="${workHour.id}"></td>
                     <td><a href="price" th:href="@{/price}">
                         <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
                                                                                aria-hidden="true"></span></b></button>
                     </a><br/></td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td  a href="hourlyWage" th:href="@{/hourlyWage}" colspan="4">
 
                         <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
                                                                                aria-hidden="true"></span></b></button>

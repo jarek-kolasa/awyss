@@ -8,5 +8,4 @@ import java.util.List;
 @Repository
 public interface HourlyWageRepository extends JpaRepository<HourlyWage, Long> {
 
-    List<HourlyWage> findAllByIdOrderByIdDesc();
 }
