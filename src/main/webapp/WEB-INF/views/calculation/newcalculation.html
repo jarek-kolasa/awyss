@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <head>
     <title>New Calculation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -18,18 +19,24 @@
         <h2><b>New Calculation</b></h2>
         <br>
         <div class="starter-template">
-            <table class="table table-striped">
-                <tr>
-                    <th> <label for="clientName">Date:</label></th>
-                    <th><p>set a picture:</p></th>
-                </tr>
-                <tr>
-                    <td><input type="date" name="creating a calculation"/></td>
-                    <td> <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
-                        <button type="submit" class="primary submit-btn">Submit</button>
-                    </td>
-                </tr>
-            </table>
+            <label for="clientName">Date:</label>
+            <input type="date" name="creating a calculation"/><br /><br />
+            <aside>
+                <p>set a picture:</p>
+                <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
+            </aside>
+
+            <!--<table class="table table-striped">-->
+                <!--<tr>-->
+                    <!--<th> <label for="clientName">Date:</label></th>-->
+                    <!--<th><p>set a picture:</p></th>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td><input type="date" name="creating a calculation"/></td>-->
+                    <!--<td> <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</table>-->
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -77,8 +84,10 @@
                     <th>total cost:</th>
                     <th></th>
                     <th></th>
+                    <th>delete row</th>
                 </tr>
                 <tr>
+
                     <td></td>
                     <td><input type="text" name="text_new_element"/></td>
                     <td><input type="text" name="text_operation_description"></td>
@@ -95,11 +104,15 @@
                     <td><input type="text" name="number of repetitions"/></td>
                     <td th:text="${totalTime}"></td>
                     <td><input type="text" name="total cost"/></td>
-                    <td><button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></b></button></td>
-                    <td><button type="button" class="btn btn-info">Save</button></td>
-
+                    <td><a href="calculation" th:href="@{/newcalculation}">
+                        <!--<button id="submit" type="button" class="btn-copy" value="Submit"><b><span-->
+                            <!--class="glyphicon glyphicon-thumbs-up"-->
+                            <!--aria-hidden="true"></span></b></button></a></td>-->
+                    <td><input type="button" value="Total time" id="MyButton" onclick="countingTotalOperationTime()"></td>
+                        <td><a href="#" class="remove-row"><span class=" glyphicon glyphicon-minus"></span></a></td>
                 </tr>
             </table>
+            <div><a href="#" id="add-row"><span class="glyphicon glyphicon-plus"></span>New Detail</a></div>
 
 
         </div>
@@ -107,5 +120,49 @@
     </div>
 </form>
 <div th:replace="fragments/layout :: footer"></div>
+
+<script>
+    // Add a row whenever user clicks on the #add-row link
+    $('#add-row').on('click', function(e){
+        e.preventDefault();
+
+        var tableBody = $('.table > tbody'),
+            // we will need to clone the last row, else we will be simply pointing to the same row. By not cloning it, we are simply moving the last row to the last row.
+            lastRowClone = $('tr:last-child', tableBody).clone();
+
+        // clear the values in the text field.
+        $('input[type=text]', lastRowClone).val('');
+
+        // and finally we append the row after the last row.
+        tableBody.append(lastRowClone);
+    });
+
+    $('.table').on('click', '.remove-row', function(e){
+        e.preventDefault();
+        var row = $(this).parent().parent();
+        row.remove();
+
+    });
+
+</script>
+<script >
+
+    var countingTotalOperationTime = function(){
+        var myClass = Java.type("awyss.totalTime.TotalTimeService");
+    }
+    $(document).ready(function(){
+        $('#MyButton').click(function(){
+           countingTotalOperationTime();
+        });
+    });
+
+    // $('#save').click( function () {
+    //     $(".totalTime").on('click', function() {
+    //         // tu ma byc odwołanie do metody z totalTimeService
+    //
+    //     })
+    // });
+
+</script>
 </body>
 </html>
