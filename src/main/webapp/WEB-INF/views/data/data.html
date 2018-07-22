@@ -67,14 +67,18 @@
                                                                                aria-hidden="true"></span></b></button>
                     </a><br/></td>
                 </tr>
-                <tr>
-                    <td  a href="hourlyWage" th:href="@{/hourlyWage}" colspan="4">
 
-                        <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"
-                                                                               aria-hidden="true"></span></b></button>
-                    </td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td  a href="hourlyWage" th:href="@{/hourlyWage}" colspan="4">-->
+
+                        <!--<button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"-->
+                                                                               <!--aria-hidden="true"></span></b></button>-->
+                    <!--</td>-->
+                <!--</tr>-->
             </table>
+            <div><a href="#" id="add-row"><span class="glyphicon glyphicon-plus"></span>New Detail</a></div>
+
+
             <br>
         </div>
 
@@ -146,4 +150,28 @@
 </div>
 <div th:replace="fragments/layout :: footer"></div>
 </body>
+
+<script>
+    // Add a row whenever user clicks on the #add-row link
+    $('#add-row').on('click', function(e){
+        e.preventDefault();
+
+        var tableBody = $('.table > tbody'),
+            // we will need to clone the last row, else we will be simply pointing to the same row. By not cloning it, we are simply moving the last row to the last row.
+            lastRowClone = $('tr:last-child', tableBody).clone();
+
+        // clear the values in the text field.
+        $('input[type=text]', lastRowClone).val('');
+
+        // and finally we append the row after the last row.
+        tableBody.append(lastRowClone);
+    });
+
+    $('.table').on('click', '.remove-row', function(e){
+        e.preventDefault();
+        var row = $(this).parent().parent();
+        row.remove();
+
+    });
+</script>
 </html>
