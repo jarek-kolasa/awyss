@@ -19,7 +19,7 @@
             <th>Aktualna cena stali [Euro/kg]</th>
         </tr>
         <tr>
-            <th th:text="${price}"></th>
+            <th th:text="${steelPrice.steelPrice}"></th>
         </tr>
     </table>
 
@@ -29,7 +29,7 @@
                 <th colspan="2">Nowa cena stali [Euro/kg]</th>
             </tr>
             <tr>
-                <th colspan="2"><input type="text" th:field="*{steelPrice}"/><br/></th>
+                <th colspan="2"><input type="number" step="0.01" th:field="*{steelPrice}"/><br/></th>
             </tr>
             <tr>
                 <td><a href="data" th:href="@{/price}">

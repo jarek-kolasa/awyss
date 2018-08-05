@@ -119,7 +119,7 @@ public class DataTests {
 
         StringBuffer sentenceBuilder = new StringBuffer("Aktualny kurs Euro: ");
         String currentDate = today.toString();
-        StringBuffer dateBuffer = new StringBuffer("http://api.nbp.pl/api/exchangerates/rates/c/eur/").append(currentDate).append("/?format=json");
+        StringBuffer dateBuffer = new StringBuffer("http://api.nbp.pl/api/exchangerates/rates/a/eur/").append(currentDate).append("/?format=json");
         String date = dateBuffer.toString();
 
         HttpClient httpClient = HttpClientBuilder.create().build();
@@ -133,7 +133,7 @@ public class DataTests {
         JsonObject baseJsonObject = baseJsonElement.getAsJsonObject();
         JsonArray ratesJsonArray = baseJsonObject.get("rates").getAsJsonArray();
         JsonObject ratesJsonObject = ratesJsonArray.get(0).getAsJsonObject();
-        String rates = ratesJsonObject.get("ask").getAsString();
+        String rates = ratesJsonObject.get("mid").getAsString();
         sentenceBuilder.append(rates);
 
         System.out.println(sentenceBuilder);

@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -34,7 +35,18 @@ public class DataController {
     @GetMapping("/data")
     public String data(Model model) throws IOException {
         List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
-        model.addAttribute("hourlyWage", hourlyWages);
+        if(hourlyWages.size() == 0){
+            HourlyWage newHourlyWage = new HourlyWage();
+            newHourlyWage.setId((long) 1);
+            newHourlyWage.setWorkName("Spawanie");
+            newHourlyWage.setPrice(0.0);
+            newHourlyWage.setWorkStartDate(LocalDateTime.now());
+
+            hourlyWages.add(newHourlyWage);
+        }
+        HourlyWage hourlyWage = hourlyWages.get(hourlyWages.size()-1);
+
+        model.addAttribute("hourlyWage", hourlyWage);
         model.addAttribute("euro", euroService.euroLastApplicableValue());
         model.addAttribute("price", steelPriceService.getLastValue());
         return "data/data";

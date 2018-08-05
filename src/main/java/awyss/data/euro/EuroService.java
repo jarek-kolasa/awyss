@@ -48,7 +48,7 @@ public class EuroService {
 
         StringBuffer sentenceBuilder = new StringBuffer();
         String currentDate = today.toString();
-        StringBuffer dateBuffer = new StringBuffer("http://api.nbp.pl/api/exchangerates/rates/c/eur/").append(currentDate).append("/?format=json");
+        StringBuffer dateBuffer = new StringBuffer("http://api.nbp.pl/api/exchangerates/rates/a/eur/").append(currentDate).append("/?format=json");
         String date = dateBuffer.toString();
 
         HttpClient httpClient = HttpClientBuilder.create().build();
@@ -62,7 +62,7 @@ public class EuroService {
         JsonObject baseJsonObject = baseJsonElement.getAsJsonObject();
         JsonArray ratesJsonArray = baseJsonObject.get("rates").getAsJsonArray();
         JsonObject ratesJsonObject = ratesJsonArray.get(0).getAsJsonObject();
-        String rates = ratesJsonObject.get("ask").getAsString();
+        String rates = ratesJsonObject.get("mid").getAsString();
         sentenceBuilder.append(rates);
 
         return sentenceBuilder.toString();
