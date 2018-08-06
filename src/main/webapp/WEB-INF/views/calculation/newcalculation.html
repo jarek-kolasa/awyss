@@ -107,7 +107,7 @@
                     <!--<button id="submit" type="button" class="btn-copy" value="Submit"><b><span-->
                     <!--class="glyphicon glyphicon-thumbs-up"-->
                     <!--aria-hidden="true"></span></b></button></a></td>-->
-                <td><input type="button" value="Total time" id="MyButton" onclick="countingTotalOperationTime()"></td>
+                <td><input type="button" value="Total time" id="MyButton" onclick="hopsa()"></td>
                 <td><a href="#" class="remove-row"><span class=" glyphicon glyphicon-minus"></span></a></td>
             </tr>
         </table>
@@ -170,6 +170,13 @@
             });
         })
     });
+</script>
+
+<script>
+    function hopsa(){
+        var hops = awyss.totalTime.TotalTimeService.countingTotalOperationTime( x,y);
+    }
+
 </script>
 
 
