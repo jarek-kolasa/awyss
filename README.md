@@ -1,5 +1,17 @@
 # Awyss
 a simple program for calculating costs of productions of metal frames for a Pomeranian company
 ## Getting Started
-<img src="images/run.png" width="300">
+<img src="images/run.png" width="350">
 
+## Build With:
+- Maven
+- Spring Security
+- Spring Data
+- Spring MVC
+- Thymeleaf
+- Hibernate
+- Lombok
+- Gson
+- Apache Tomcat
+
+### Enjoy 
