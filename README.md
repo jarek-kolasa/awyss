@@ -14,4 +14,4 @@ a simple program for calculating costs of productions of metal frames for a Pome
 - Gson
 - Apache Tomcat
 
-### Enjoy 
+### Enjoy :upside_down_face:
