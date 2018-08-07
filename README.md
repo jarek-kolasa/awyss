@@ -2,6 +2,7 @@
 a simple program for calculating costs of productions of metal frames for a Pomeranian company
 ## Getting Started
 <img src="images/run.png" width="350">
+http://localhost:8090/
 
 ## Build With:
 - Maven
@@ -15,3 +16,4 @@ a simple program for calculating costs of productions of metal frames for a Pome
 - Apache Tomcat
 
 ### Enjoy :upside_down_face:
+(not finished yet, but soon)
