@@ -174,7 +174,7 @@
     function hopsa(){
         var numberOfRepetitions = parseFloat(document.calculate.numberOfRepetitions.value);
         var operationTime = parseFloat(document.calculate.operationTime.value);
-        var totalTime = numberOfRepetitions + operationTime;
+        var totalTime = numberOfRepetitions * operationTime;
         document.calculate.totalTime.value = totalTime;
        // var hops = awyss.calculation.totalTime.TotalTimeService.countingTotalOperationTime( );
 
