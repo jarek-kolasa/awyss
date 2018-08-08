@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>New Calculation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,117 +9,126 @@
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}"/>
     <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 </head>
 <body>
 
 <div th:replace="fragments/layout :: header"></div>
-<form class="table-bordered form-horizontal" action="#" method="post" th:action="@{/authenticate}">
+<form name="calculate" class="table-bordered form-horizontal" action="#" method="post" th:action="@{/authenticate}">
     <div class="container">
-
         <h2><b>New Calculation</b></h2>
         <br>
-        <div class="starter-template">
-            <label for="clientName">Date:</label>
-            <input type="date" name="creating a calculation"/><br /><br />
-            <aside>
-                <p>set a picture:</p>
-                <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
-            </aside>
 
-            <!--<table class="table table-striped">-->
-                <!--<tr>-->
-                    <!--<th> <label for="clientName">Date:</label></th>-->
-                    <!--<th><p>set a picture:</p></th>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td><input type="date" name="creating a calculation"/></td>-->
-                    <!--<td> <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--</table>-->
+        <textarea id="summernote" name="editordata"></textarea>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Clients<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/clientlist">List of Clients</a></li>
-                            <li><a href="/clientadd">Add Client</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <div class="starter-template">
+        <label for="clientName">Date:</label>
+        <input type="date" name="creating a calculation"/><br /><br />
 
-            <br/><br/>
-            <fieldset>
-                <label>name of the frame: </label>
-                <label><textarea name="name of the frame" cols="30" rows="1"></textarea></label>
+        <!--<p>set a picture:</p>-->
+        <!--<input id="singleFileUploadInput" type="file" name="file" class="file-input" required />-->
 
-                <br/>
-                <label>drawing number: </label>
-                <label><textarea name="drawing number" cols="30" rows="1"></textarea></label>
-            </fieldset>
+
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Clients<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/clientlist">List of Clients</a></li>
+                        <li><a href="/clientadd">Add Client</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <br/><br/>
+        <fieldset>
+            <label>name of the frame: </label>
+            <label><textarea name="name of the frame" cols="30" rows="1"></textarea></label>
 
             <br/>
-            <label>finish:<br/></label>
-            <label><input type="checkbox" name="finish" value="paint" checked="checked"/>paint</label>
-            <label><input type="checkbox" name="finish" value="chrome" checked="checked"/>chrome</label>
-            <label><input type="checkbox" name="finish" value="raw" checked="checked"/>raw</label><br/>
+            <label>drawing number: </label>
+            <label><textarea name="drawing number" cols="30" rows="1"></textarea></label>
+        </fieldset>
+
+        <br/>
+        <label>finish:<br/></label>
+        <label><input type="checkbox" name="finish" value="paint" checked="unchecked"/>paint</label>
+        <label><input type="checkbox" name="finish" value="chrome" checked="unchecked"/>chrome</label>
+        <label><input type="checkbox" name="finish" value="raw" checked="checked"/>raw</label><br/>
 
 
-            <label><h4>Operations:</h4></label><br/>
+        <label><h4>Operations:</h4></label><br/>
 
 
 
-            <table class="table table-striped">
-                <tr>
-                    <th class="col-sm-1"></th>
-                    <th>add new element:</th>
-                    <th>operation description:</th>
-                    <th>typ</th>
-                    <th>operation time:</th>
-                    <th>number of repetitions:</th>
-                    <th>total time:</th>
-                    <th>total cost:</th>
-                    <th></th>
-                    <th></th>
-                    <th>delete row</th>
-                </tr>
-                <tr>
+        <table class="table table-striped">
+            <tr>
+                <th class="col-sm-1"></th>
+                <th>add new element:</th>
+                <th>operation description:</th>
+                <th>typ</th>
+                <th>operation time:</th>
+                <th>number of repetitions:</th>
+                <th>total time:</th>
+                <th>total cost:</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="text" name="text_new_element"/></td>
+                <td><input type="text" name="text_operation_description"></td>
+                <td><select name="types">
+                    <option value="giec.">giec.</option>
+                    <option value="ślus.">ślus.</option>
+                    <option value="spaw.">spaw.</option>
+                    <option value="szlif.">szlif.</option>
+                    <option value="malar.">malar.</option>
+                    <option value="mon.">mon.</option>
+                </select></td>
+                <td><input type="text" name="operationTime"/></td>
+                <td><input type="text" name="numberOfRepetitions"/></td>
+                <!--<td th:text="${totalTime}"></td>-->
+                <td><input type="text" name="totalTime" readonly="readonly"> </td>
+                <td><input type="text" name="total cost" /></td>
+                <td><a href="calculation" th:href="@{/newcalculation}">
 
-                    <td></td>
-                    <td><input type="text" name="text_new_element"/></td>
-                    <td><input type="text" name="text_operation_description"></td>
-                    <td><select name="types">
-                        <option value="giec.">giec.</option>
-                        <option value="ślus.">ślus.</option>
-                        <option value="spaw.">spaw.</option>
-                        <option value="szlif.">szlif.</option>
-                        <option value="malar.">malar.</option>
-                        <option value="mon.">mon.</option>
-                    </select></td>
-                    <td><input type="text" name="operation time"/></td>
-                    <!--<td th:text="${operationTime}"></td>-->
-                    <td><input type="text" name="number of repetitions"/></td>
-                    <td th:text="${totalTime}"></td>
-                    <td><input type="text" name="total cost"/></td>
-                    <td><a href="calculation" th:href="@{/newcalculation}">
-                        <!--<button id="submit" type="button" class="btn-copy" value="Submit"><b><span-->
-                            <!--class="glyphicon glyphicon-thumbs-up"-->
-                            <!--aria-hidden="true"></span></b></button></a></td>-->
-                    <td><input type="button" value="Total time" id="MyButton" onclick="countingTotalOperationTime()"></td>
-                        <td><a href="#" class="remove-row"><span class=" glyphicon glyphicon-minus"></span></a></td>
-                </tr>
-            </table>
-            <div><a href="#" id="add-row"><span class="glyphicon glyphicon-plus"></span>New Detail</a></div>
+                <td><input type="button" value="Total Time"  id="MyButton" onclick="hopsa()"></td>
+                <td><a href="#" class="remove-row"><span class=" glyphicon glyphicon-minus"></span></a></td>
+            </tr>
+        </table>
+        <div><a href="#" id="add-row"><span class="glyphicon glyphicon-plus"></span>New Detail</a></div>
+        </table>
 
 
-        </div>
+    </div>
 
     </div>
 </form>
-<div th:replace="fragments/layout :: footer"></div>
+<div th:replace="fragments/components :: modal(id='loadfile-modal', title='Loadfile')"></div>
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'load picture & write some comments',
+            tabsize: 2,
+            height: 100
+        });
+
+    });
+</script>
 
 <script>
     // Add a row whenever user clicks on the #add-row link
@@ -145,24 +154,44 @@
     });
 
 </script>
-<script >
-
-    var countingTotalOperationTime = function(){
-        var myClass = Java.type("awyss.totalTime.TotalTimeService");
-    }
-    $(document).ready(function(){
-        $('#MyButton').click(function(){
-           countingTotalOperationTime();
-        });
+<script th:inline="javascript" type="text/javascript">
+    /* Fill in modal with content loaded with Ajax */
+    $(document).ready(function () {
+        $('#loadfile').on('click', function () {
+            $("#loadfile-modal").modal();
+            $("#loadfile-modal-body").text("");
+            $.ajax({
+                url: "loadfile",
+                cache: false
+            }).done(function (html) {
+                $("#loadfile-modal-body").append(html);
+            });
+        })
     });
+</script>
 
-    // $('#save').click( function () {
-    //     $(".totalTime").on('click', function() {
-    //         // tu ma byc odwołanie do metody z totalTimeService
-    //
-    //     })
-    // });
+<script type="text/javascript">
+    function hopsa(){
+        var numberOfRepetitions = parseFloat(document.calculate.numberOfRepetitions.value);
+        var operationTime = parseFloat(document.calculate.operationTime.value);
+        var totalTime = numberOfRepetitions * operationTime;
+        document.calculate.totalTime.value = totalTime;
+       // var hops = awyss.calculation.totalTime.TotalTimeService.countingTotalOperationTime( );
+
+    }
 
 </script>
+
+
+<!--<script>-->
+<!--// If user clicks anywhere outside of the modal, Modal will close-->
+
+<!--var modal = document.getElementById('modal-wrapper');-->
+<!--window.onclick = function(event) {-->
+<!--if (event.target == modal) {-->
+<!--modal.style.display = "none";-->
+<!--}-->
+<!--}-->
+<!--</script>-->
 </body>
 </html>
