@@ -1,7 +1,6 @@
 package awyss.data.steelPrice;
 
 import lombok.*;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;

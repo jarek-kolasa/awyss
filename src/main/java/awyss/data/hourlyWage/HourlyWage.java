@@ -1,6 +1,8 @@
 package awyss.data.hourlyWage;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +14,8 @@ import java.time.LocalDateTime;
 @Table(name = "work_wage")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class HourlyWage implements Serializable {
 
     @Id

@@ -3,6 +3,7 @@ package awyss.data;
 import awyss.data.euro.EuroService;
 import awyss.data.hourlyWage.HourlyWage;
 import awyss.data.hourlyWage.HourlyWageRepository;
+import awyss.data.hourlyWage.HourlyWageService;
 import awyss.data.steelPrice.SteelPrice;
 import awyss.data.steelPrice.SteelPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import java.util.List;
 public class DataController {
 
     @Autowired
-    private HourlyWageRepository hourlyWageRepository;
+    private HourlyWageService hourlyWageService;
 
     @Autowired
     private EuroService euroService;
@@ -34,21 +35,21 @@ public class DataController {
 
     @GetMapping("/data")
     public String data(Model model) throws IOException {
-        List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
-        if(hourlyWages.size() == 0){
-            HourlyWage newHourlyWage = new HourlyWage();
-            newHourlyWage.setId((long) 1);
-            newHourlyWage.setWorkName("Spawanie");
-            newHourlyWage.setPrice(0.0);
-            newHourlyWage.setWorkStartDate(LocalDateTime.now());
 
-            hourlyWages.add(newHourlyWage);
-        }
-        HourlyWage hourlyWage = hourlyWages.get(hourlyWages.size()-1);
+        List<HourlyWage> hourlyWages = hourlyWageService.getHourlyWageList();
 
-        model.addAttribute("hourlyWage", hourlyWage);
+        model.addAttribute("hourlyWage", hourlyWages);
         model.addAttribute("euro", euroService.euroLastApplicableValue());
         model.addAttribute("price", steelPriceService.getLastValue());
+        return "data/data";
+    }
+
+    @PostMapping("/data")
+    @ResponseStatus(HttpStatus.OK)
+    public String addWorkToHourlyWage(@Valid @ModelAttribute("hourlyWage") HourlyWage work, BindingResult bindingResult){
+
+        hourlyWageService.updateHourlyWage(work);
+
         return "data/data";
     }
 

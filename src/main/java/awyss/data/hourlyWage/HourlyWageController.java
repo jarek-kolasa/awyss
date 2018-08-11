@@ -16,33 +16,26 @@ import java.util.List;
 @Controller
 public class HourlyWageController {
 
-//    @Autowired
-//    private HourlyWageRepository hourlyWageRepository;
-//
-//    @RequestMapping("/price_per_hour")
-//    public String getWorkers(Model model) {
-//        List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
-//        model.addAttribute("hourlyWage", hourlyWages);
-//        return "data/hourlyWage";
-//
-//    }
-//
-//
-//    @GetMapping("/edit_price_per_hour")
-//    public String price(Model model) {
-//        return "data/hourlyWage";
-//    }
-//
-//
-//    @PostMapping(value = "/add_work")
-//    public String submit(@Valid @ModelAttribute("hourlyWage") HourlyWage hourlyWage, BindingResult result, ModelMap modelMap){
-//        if(result.hasErrors()){
-//            return "error";
-//        }
-//        hourlyWageRepository.save(hourlyWage);
-//        return "data/hourlyWage";
-//    }
-//
+    @Autowired
+    private HourlyWageRepository hourlyWageRepository;
+
+    @GetMapping("/price_per_hour")
+    public String price(Model model, Long id) {
+        HourlyWage wage = hourlyWageRepository.findOne(id);
+        model.addAttribute("hourlyWages", wage);
+        return "data/hourlyWage";
+    }
+
+
+    @PostMapping(value = "/add_work")
+    public String submit(@Valid @ModelAttribute("hourlyWages") HourlyWage hourlyWage, BindingResult result, ModelMap modelMap){
+        if(result.hasErrors()){
+            return "error";
+        }
+        hourlyWageRepository.save(hourlyWage);
+        return "data/hourlyWage";
+    }
+
 
 
 }

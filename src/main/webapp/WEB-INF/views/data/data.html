@@ -50,6 +50,7 @@
         <br>
 
         <div class="starter-template">
+
             <h4>Stawki godzinowe</h4><br>
             <table class="table table-bordered">
                 <tr>
@@ -57,87 +58,58 @@
                     <th>Typ operacji</th>
                     <th>Koszt operacji [zł/h]</th>
                     <th>Edytuj</th>
+                    <th>Usuń</th>
                 </tr>
-                <tr th:each="workHour : ${hourlyWage}">
-                    <td th:text="${workHour.id}"></td>
-                    <td th:text="${workHour.workName}"></td>
-                    <td th:text="${workHour.price}"></td>
-                    <td><a href="price" th:href="@{/price}">
+                <tr th:each="hours: ${hourlyWage}">
+                    <td th:text="${hours.id}"></td>
+                    <td th:text="${hours.workName}"></td>
+                    <td th:text="${hours.price}"></td>
+                    <td><a href="hourlyWage" th:href="@{/hourlyWage}">
                         <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
                                                                                aria-hidden="true"></span></b></button>
-                    </a><br/></td>
+                    </a></td>
+                    <td><a href="#" type="reset"><span class=" glyphicon glyphicon-remove"></span></a></td>
                 </tr>
-
-                <!--<tr>-->
-                    <!--<td  a href="hourlyWage" th:href="@{/hourlyWage}" colspan="4">-->
-
-                        <!--<button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"-->
-                                                                               <!--aria-hidden="true"></span></b></button>-->
-                    <!--</td>-->
-                <!--</tr>-->
             </table>
-            <div><a href="#" id="add-row"><span class="glyphicon glyphicon-plus"></span>New Detail</a></div>
-
-
             <br>
         </div>
 
-        <!--<div class="starter-template">-->
-            <!--<h3>Czasochłonność</h3><br>-->
-            <!--<p>Czasy operacji [sek]</p>-->
-            <!--<table class="table table-bordered">-->
-                <!--<tr>-->
-                    <!--<th>Typ operacji</th>-->
-                    <!--<th>Czas operacji [s]</th>-->
-                    <!--<th>Id</th>-->
-                    <!--<th>Edytuj</th>-->
-                <!--</tr>-->
-                <!--<tr th:each="workHour : ${hourlyWage}">-->
-                    <!--<td th:text="${workHour.workName}"></td>-->
-                    <!--<td th:text="${workHour.price}"></td>-->
-                    <!--<td th:text="${workHour.id}"></td>-->
-                    <!--<td><a href="price" th:href="@{/price}">-->
-                        <!--<button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"-->
-                                                                               <!--aria-hidden="true"></span></b></button>-->
-                    <!--</a><br/></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-
-                        <!--<button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"-->
-                                                                               <!--aria-hidden="true"></span></b></button>-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-            <!--<br>-->
-
-            <!--<p>Czas przygotowania / zakończenia [godz.]</p>-->
-            <!--<table class="table table-bordered">-->
-                <!--<tr>-->
-                    <!--<th>Typ operacji <br> rozkrój / zakończenie</th>-->
-                    <!--<th>Czas <br> rozkrój / zakończenie</th>-->
-                    <!--<th>Id</th>-->
-                    <!--<th>Edytuj</th>-->
-                <!--</tr>-->
-                <!--<tr th:each="workHour : ${hourlyWage}">-->
-                    <!--<td th:text="${workHour.workName}"></td>-->
-                    <!--<td th:text="${workHour.price}"></td>-->
-                    <!--<td th:text="${workHour.id}"></td>-->
-                    <!--<td><a href="price" th:href="@{/price}">-->
-                        <!--<button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"-->
-                                                                               <!--aria-hidden="true"></span></b></button>-->
-                    <!--</a><br/></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="4">-->
-
-                        <!--<button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-plus"-->
-                                                                               <!--aria-hidden="true"></span></b></button>-->
-                    <!--</td>-->
-                <!--</tr>-->
-            <!--</table>-->
-        <!--</div>-->
-
+        <div>
+            <h4>Dodaj operację</h4><br>
+            <table class="table table-striped" id="tableToModify">
+                <tr>
+                    <th>Typ operacji</th>
+                    <th>Koszt operacji [zł/h]</th>
+                    <th>Akceptuj</th>
+                </tr>
+                <tr>
+                    <td><input type="text" th:field="*{hourlyWages}" name="text_new_element"/></td>
+                    <td><input type="text" th:field="*{hourlyWages}" name="text_new_element"/></td>
+                    <td>
+                        <button type="submit" class="btn btn-default" value="Submit"><b><span
+                                class="glyphicon glyphicon-thumbs-up"
+                                aria-hidden="true"></span></b></button>
+                    </td>
+                </tr>
+            </table>
+            <form action="#"  th:action="@{/data}" th:object="${hourlyWages}" method="post">
+                <tr>
+                    <!--<th><input type="text" th:field="*{hourlyWage}"/><br/></th>-->
+                </tr>
+                <tr>
+                    <td><a href="data" th:href="@{/data}">
+                        <button type="submit" class="btn btn-default" value="Submit"><b><span
+                                class="glyphicon glyphicon-thumbs-up"
+                                aria-hidden="true"></span></b></button>
+                    </a></td>
+                    <td><a href="data" th:href="@{/data}">
+                        <button type="reset" class="btn btn-default" value="Submit"><b><span
+                                class="glyphicon glyphicon-remove"
+                                aria-hidden="true"></span></b></button>
+                    </a><br/></td>
+                </tr>
+            </form>
+        </div>
 
         <br>
 
@@ -148,30 +120,9 @@
         </div>
     </div>
 </div>
+<br>
+
 <div th:replace="fragments/layout :: footer"></div>
 </body>
 
-<script>
-    // Add a row whenever user clicks on the #add-row link
-    $('#add-row').on('click', function(e){
-        e.preventDefault();
-
-        var tableBody = $('.table > tbody'),
-            // we will need to clone the last row, else we will be simply pointing to the same row. By not cloning it, we are simply moving the last row to the last row.
-            lastRowClone = $('tr:last-child', tableBody).clone();
-
-        // clear the values in the text field.
-        $('input[type=text]', lastRowClone).val('');
-
-        // and finally we append the row after the last row.
-        tableBody.append(lastRowClone);
-    });
-
-    $('.table').on('click', '.remove-row', function(e){
-        e.preventDefault();
-        var row = $(this).parent().parent();
-        row.remove();
-
-    });
-</script>
 </html>
