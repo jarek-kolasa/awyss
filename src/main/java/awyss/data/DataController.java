@@ -2,7 +2,6 @@ package awyss.data;
 
 import awyss.data.euro.EuroService;
 import awyss.data.hourlyWage.HourlyWage;
-import awyss.data.hourlyWage.HourlyWageRepository;
 import awyss.data.hourlyWage.HourlyWageService;
 import awyss.data.steelPrice.SteelPrice;
 import awyss.data.steelPrice.SteelPriceService;
@@ -12,13 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -34,6 +29,7 @@ public class DataController {
     private SteelPriceService steelPriceService;
 
     @GetMapping("/data")
+    @ResponseStatus(HttpStatus.OK)
     public String data(Model model) throws IOException {
 
         List<HourlyWage> hourlyWages = hourlyWageService.getHourlyWageList();
@@ -44,15 +40,6 @@ public class DataController {
         return "data/data";
     }
 
-    @PostMapping("/data")
-    @ResponseStatus(HttpStatus.OK)
-    public String addWorkToHourlyWage(@Valid @ModelAttribute("hourlyWage") HourlyWage work, BindingResult bindingResult){
-
-        hourlyWageService.updateHourlyWage(work);
-
-        return "data/data";
-    }
-
     @GetMapping("/price")
     public String priceChange(Model model) {
         model.addAttribute("steelPrice", steelPriceService.getLastValue());
@@ -60,7 +47,7 @@ public class DataController {
     }
 
     @PostMapping("/price")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public String updatePriceOfSteel(@Valid @ModelAttribute("steelPrice") SteelPrice steelPrice){
         System.out.println(steelPrice.getId());
         System.out.println(steelPrice.getSteelPrice());
@@ -69,6 +56,26 @@ public class DataController {
 
         steelPriceService.updatePrice(steelPrice);
         return "data/price";
+    }
+
+    @GetMapping("/time-consuming")
+    public String hourlyWage(Model model){
+        model.addAttribute("hourlyWage", hourlyWageService);
+
+        return "data/hourlyWage";
+    }
+
+        @PostMapping("/time-consuming")
+    @ResponseStatus(HttpStatus.CREATED)
+    public String addWorkToHourlyWage(@Valid @ModelAttribute("hourlyWage") HourlyWage work, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return "general";
+        }
+
+        hourlyWageService.updateHourlyWage(work);
+
+        return "data/data";
     }
 
 }

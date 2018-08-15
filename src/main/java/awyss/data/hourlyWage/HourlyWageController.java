@@ -16,26 +16,24 @@ import java.util.List;
 @Controller
 public class HourlyWageController {
 
-    @Autowired
-    private HourlyWageRepository hourlyWageRepository;
-
-    @GetMapping("/price_per_hour")
-    public String price(Model model, Long id) {
-        HourlyWage wage = hourlyWageRepository.findOne(id);
-        model.addAttribute("hourlyWages", wage);
-        return "data/hourlyWage";
-    }
-
-
-    @PostMapping(value = "/add_work")
-    public String submit(@Valid @ModelAttribute("hourlyWages") HourlyWage hourlyWage, BindingResult result, ModelMap modelMap){
-        if(result.hasErrors()){
-            return "error";
-        }
-        hourlyWageRepository.save(hourlyWage);
-        return "data/hourlyWage";
-    }
-
-
+//    @Autowired
+//    private HourlyWageRepository hourlyWageRepository;
+//
+//    @GetMapping("/hourlyWage")
+//    public String price(Model model, Long id) {
+//        HourlyWage wage = hourlyWageRepository.findOne(id);
+//        model.addAttribute("hourlyWages", wage);
+//        return "hourlyWage";
+//    }
+//
+//
+//    @PostMapping(value = "/hourlyWage")
+//    public String submit(@Valid @ModelAttribute("hourlyWages") HourlyWage hourlyWage, BindingResult result, ModelMap modelMap){
+//        if(result.hasErrors()){
+//            return "error";
+//        }
+//        hourlyWageRepository.save(hourlyWage);
+//        return "hourlyWage";
+//    }
 
 }

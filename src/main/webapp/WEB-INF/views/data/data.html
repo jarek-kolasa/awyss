@@ -64,7 +64,7 @@
                     <td th:text="${hours.id}"></td>
                     <td th:text="${hours.workName}"></td>
                     <td th:text="${hours.price}"></td>
-                    <td><a href="hourlyWage" th:href="@{/hourlyWage}">
+                    <td><a href="hourlyWage" th:href="@{/time-consuming}">
                         <button type="button" class="btn btn-default"><b><span class="glyphicon glyphicon-edit"
                                                                                aria-hidden="true"></span></b></button>
                     </a></td>
@@ -83,8 +83,8 @@
                     <th>Akceptuj</th>
                 </tr>
                 <tr>
-                    <td><input type="text" th:field="*{hourlyWages}" name="text_new_element"/></td>
-                    <td><input type="text" th:field="*{hourlyWages}" name="text_new_element"/></td>
+                    <td><input type="text" th:field="*{hourlyWage}" name="text_new_element"/></td>
+                    <td><input type="text" th:field="*{hourlyWage}" name="text_new_element"/></td>
                     <td>
                         <button type="submit" class="btn btn-default" value="Submit"><b><span
                                 class="glyphicon glyphicon-thumbs-up"
@@ -92,9 +92,9 @@
                     </td>
                 </tr>
             </table>
-            <form action="#"  th:action="@{/data}" th:object="${hourlyWages}" method="post">
+            <form action="#"  th:action="@{/data}" th:object="${hourlyWage}" method="post">
                 <tr>
-                    <!--<th><input type="text" th:field="*{hourlyWage}"/><br/></th>-->
+                    <th><input type="text" th:field="*{hourlyWage}"/><br/></th>
                 </tr>
                 <tr>
                     <td><a href="data" th:href="@{/data}">

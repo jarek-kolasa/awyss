@@ -12,9 +12,9 @@ public class HourlyWageService {
     @Autowired
     HourlyWageRepository hourlyWageRepository;
 
-    public List<HourlyWage> getHourlyWageList(){
+    public List<HourlyWage> getHourlyWageList() {
         List<HourlyWage> hourlyWages = hourlyWageRepository.findAll();
-        if(hourlyWages.size() == 0){
+        if (hourlyWages.size() == 0) {
             HourlyWage newHourlyWage = new HourlyWage();
             newHourlyWage.setId((long) 1);
             newHourlyWage.setWorkName("Spawanie");
@@ -26,7 +26,7 @@ public class HourlyWageService {
         return hourlyWages;
     }
 
-public HourlyWage updateHourlyWage(HourlyWage newHourlyWage){
-    return hourlyWageRepository.save(newHourlyWage);
-}
+    public HourlyWage updateHourlyWage(HourlyWage newHourlyWage) {
+        return hourlyWageRepository.save(newHourlyWage);
+    }
 }
