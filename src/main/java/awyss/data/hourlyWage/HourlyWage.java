@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class HourlyWage {
 //public class HourlyWage implements Serializable {
-    
+
 
     @Id
     @GeneratedValue
